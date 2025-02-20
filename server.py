@@ -35,6 +35,11 @@ def submit_data():
 
     print(f"New submission added: {received_data}")
     return jsonify({"message": "Success", "updated_data": current_data}), 200
+@app.route('/data', methods=['GET'])
+def get_data():
+    data = load_data()  # Đọc dữ liệu từ file data.json
+    return jsonify(data), 200
+
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5000, debug=True)
