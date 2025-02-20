@@ -8,7 +8,7 @@ app = Flask(__name__)
 CORS(app)
 
 DATA_FILE = "data.json"
-PASSWORD_HASH = hashlib.sha256("hihi".encode()).hexdigest()  # Băm mật khẩu "hihi"
+PASSWORD_HASH = hashlib.sha256("Sugar".encode()).hexdigest()  # Băm mật khẩu "hihi"
 
 def load_data():
     try:
