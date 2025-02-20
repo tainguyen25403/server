@@ -2,11 +2,13 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import json
 from datetime import datetime
+import hashlib  # Thêm thư viện để băm mật khẩu
 
 app = Flask(__name__)
 CORS(app)
 
 DATA_FILE = "data.json"
+PASSWORD_HASH = hashlib.sha256("hihi".encode()).hexdigest()  # Băm mật khẩu "hihi"
 
 def load_data():
     try:
@@ -35,11 +37,25 @@ def submit_data():
 
     print(f"New submission added: {received_data}")
     return jsonify({"message": "Success", "updated_data": current_data}), 200
+
 @app.route('/data', methods=['GET'])
 def get_data():
     data = load_data()  # Đọc dữ liệu từ file data.json
     return jsonify(data), 200
 
+@app.route('/validate', methods=['POST'])
+def validate_password():
+    data = request.get_json()
+    if not data or "password" not in data:
+        return jsonify({"valid": False, "error": "No password provided"}), 400
+
+    received_password_hash = data["password"]
+    
+    # Kiểm tra hash của mật khẩu nhập vào có khớp với PASSWORD_HASH không
+    if received_password_hash == PASSWORD_HASH:
+        return jsonify({"valid": True}), 200
+    else:
+        return jsonify({"valid": False}), 401  # Unauthorized
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5000, debug=True)
