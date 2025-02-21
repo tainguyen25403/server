@@ -22,6 +22,7 @@ def load_data():
         return {"submissions": []}
 
 def save_data(data):
+    print(data)
     with open(DATA_FILE, "w") as f:
         json.dump(data, f, indent=4)
 
