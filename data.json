@@ -1,0 +1,33 @@
+{
+    "submissions": [
+        {
+            "date": "2025-03-15",
+            "food": [
+                "Korean food"
+            ],
+            "dessert": [
+                "boba"
+            ],
+            "activities": [
+                "cinema"
+            ],
+            "timestamp": "2025-02-20 21:41:13"
+        },
+        {
+            "date": "0003-12-31",
+            "food": [
+                "hotdog",
+                "pizza"
+            ],
+            "dessert": [
+                "churro",
+                "randombun"
+            ],
+            "activities": [
+                "cinema",
+                "exhibition"
+            ],
+            "timestamp": "2025-02-21 10:22:16"
+        }
+    ]
+}
